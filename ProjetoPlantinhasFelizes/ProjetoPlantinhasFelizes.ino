@@ -95,9 +95,8 @@ void loop() {
 void sendMessage(int sensorValue) {
   WiFiClient *client;
 
-  String message = String("\"" + String(sensorValue) + "\"");
   char msg[20];
-  message.toCharArray(msg, 20);
+  sprintf(msg, "\"%4d\"", sensorValue);
 
   client = PubNub.publish(channel, msg);
 
